@@ -4,6 +4,7 @@ import Acerca from '../pages/Acerca'
 import Contacto from '../pages/Contacto'
 import Error404 from '../pages/Error404';
 import Home from '../pages/Home';
+import Usuario from '../pages/Usuario';
 import MenuConceptos from './MenuConceptos';
 
 
@@ -11,6 +12,8 @@ import MenuConceptos from './MenuConceptos';
 a no ser que tenga el atributo exact en el componente*/
 
 /* El componente Route es un componente contenedor */
+
+/* Para para un parámetro a un link hay que utilizar /: */
 
 /* El uso del * de Error404 indica que cualquier ruta se va a cargar y siempre se pone al final */
 
@@ -24,6 +27,7 @@ const ConceptosBasicos = () => {
                     <Route exact path="/" component={Home}></Route>
                     <Route exact path="/acerca" component={Acerca}></Route>
                     <Route exact path="/contacto" component={Contacto}></Route>
+                    <Route exact path="/usuario/:username" component={Usuario}></Route>
                     <Route path="*" component={Error404}></Route>
                 </Switch>            
             </Router>
