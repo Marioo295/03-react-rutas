@@ -1,0 +1,29 @@
+{
+  "nombres": [
+    {
+      "id": 1,
+      "name": "Mario",
+      "horoscopo": "Libra"
+    },
+    {
+      "id": 2,
+      "name": "Alex",
+      "horoscopo": "Leo"
+    },
+    {
+      "id": 3,
+      "name": "M.Ángeles",
+      "horoscopo": "Tauro"
+    },
+    {
+      "id": 4,
+      "name": "Juanan",
+      "horoscopo": "Géminis"
+    },
+    {
+      "id": 5,
+      "name": "Marta",
+      "horoscopo": "Cáncer"
+    }
+  ]
+}
