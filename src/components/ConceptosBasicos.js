@@ -4,6 +4,7 @@ import Acerca from '../pages/Acerca'
 import Contacto from '../pages/Contacto'
 import Error404 from '../pages/Error404';
 import Home from '../pages/Home';
+import MenuConceptos from './MenuConceptos';
 
 
 /* La ruta del home siempre tiene que estar al final en el switch para que carguen las anteriores rutas,
@@ -18,6 +19,7 @@ const ConceptosBasicos = () => {
         <div>
             <h2>CONCEPTOS BÁSICOS</h2>
             <Router>
+                <MenuConceptos></MenuConceptos>
                 <Switch>
                     <Route exact path="/" component={Home}></Route>
                     <Route exact path="/acerca" component={Acerca}></Route>
