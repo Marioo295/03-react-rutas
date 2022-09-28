@@ -2,12 +2,15 @@ import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import Acerca from '../pages/Acerca'
 import Contacto from '../pages/Contacto'
+import Dashboard from '../pages/Dashboard';
 import Error404 from '../pages/Error404';
 import Home from '../pages/Home';
+import Login from '../pages/Login';
 import Productos from '../pages/Productos';
 import ReactTopics from '../pages/ReactTopics';
 import Usuario from '../pages/Usuario';
 import MenuConceptos from './MenuConceptos';
+import PrivateRoute from './PrivateRoute';
 
 
 /* La ruta del home siempre tiene que estar al final en el switch para que carguen las anteriores rutas,
@@ -36,6 +39,9 @@ const ConceptosBasicos = () => {
                     <Route exact path="/about"><Redirect to="/acerca"></Redirect></Route>
                     <Route exact path="/contact"><Redirect to="/contacto"></Redirect></Route>
                     <Route path="/react" component={ReactTopics}></Route>
+                    <Route exact path="/login" component={Login}></Route>
+                    {/* <Route exact path="/dashboard" component={Dashboard}></Route> */}
+                    <PrivateRoute exact path="/dashboard" component={Dashboard}></PrivateRoute>
                     <Route path="*" component={Error404}></Route>
                 </Switch>            
             </Router>
