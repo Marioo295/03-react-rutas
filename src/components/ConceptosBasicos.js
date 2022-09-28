@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import Acerca from '../pages/Acerca'
 import Contacto from '../pages/Contacto'
 import Error404 from '../pages/Error404';
@@ -16,6 +16,8 @@ a no ser que tenga el atributo exact en el componente*/
 
 /* Para para un parámetro a un link hay que utilizar /: */
 
+/* Para redireccionar una página con otra dentro de la aplicación, se usa el componente <Redirect /> */
+
 /* El uso del * de Error404 indica que cualquier ruta se va a cargar y siempre se pone al final */
 
 const ConceptosBasicos = () => {
@@ -30,6 +32,8 @@ const ConceptosBasicos = () => {
                     <Route exact path="/contacto" component={Contacto}></Route>
                     <Route exact path="/usuario/:username" component={Usuario}></Route>
                     <Route exact path="/productos" component={Productos}></Route>
+                    <Route exact path="/about"><Redirect to="/acerca"></Redirect></Route>
+                    <Route exact path="/contact"><Redirect to="/contacto"></Redirect></Route>
                     <Route path="*" component={Error404}></Route>
                 </Switch>            
             </Router>
