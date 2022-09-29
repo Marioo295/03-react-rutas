@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { HashRouter, NavLink, Route, Switch } from 'react-router-dom';
 import { helpHttp } from '../helpers/helpHttp';
+import Error404 from '../pages/Error404';
 import CrudForm from './CrudForm';
 import CrudTable from './CrudTable';
 import Loader from './Loader';
@@ -84,13 +86,25 @@ const CrudApi = () => {
 
     return (
         <div>
-            <h2>CRUD API</h2>
-            <article className="grid-1-2">
-                <CrudForm createData={createData} updateData={updateData} dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}></CrudForm>
-                {loading && <Loader></Loader>}
-                {error && <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545"></Message>}
-                {db && <CrudTable data={db} setDataToEdit={setDataToEdit} deleteData={deleteData}></CrudTable>}
-            </article>
+            <HashRouter basename="nombres">
+                <header>
+                    <h2>CRUD API con rutas</h2>
+                    <nav>
+                        <NavLink to="/" activeClassName="active">Nombres</NavLink>
+                        <NavLink to="/agregar" activeClassName="active">Nombres</NavLink>
+                    </nav>
+                </header>
+                <Switch>
+                    <Route exact path="/"><h2>Home de nombres</h2></Route>
+                    <Route exact path="/agregar"><h2>Agregar nombres</h2></Route>
+                    <Route exact path="/editar/:id"><h2>Editar nombres</h2></Route>
+                    <Route exact path="*" children={<Error404></Error404>}><h2>Error 404</h2></Route>
+                </Switch>
+            </HashRouter>
+            <CrudForm createData={createData} updateData={updateData} dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}></CrudForm>
+            {loading && <Loader></Loader>}
+            {error && <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545"></Message>}
+            {db && <CrudTable data={db} setDataToEdit={setDataToEdit} deleteData={deleteData}></CrudTable>}
         </div>
     );
 };
