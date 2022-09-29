@@ -1,7 +1,7 @@
 import './App.css';
 /* import ConceptosBasicos from './components/ConceptosBasicos'; */
-import CrudApi from './components/CrudApi';
-/* import SongSearch from './components/SongSearch'; */
+/* import CrudApi from './components/CrudApi'; */
+import SongSearch from './components/SongSearch';
 
 function App() {
     return (
@@ -13,9 +13,9 @@ function App() {
             rel="noreferrer">Documentación
         </a>
         <hr></hr>
-        {/* <SongSearch></SongSearch> */}
+        <SongSearch></SongSearch>
         <hr></hr>
-        <CrudApi></CrudApi>
+        {/* <CrudApi></CrudApi> */}
         <hr></hr>
         {/* <ConceptosBasicos></ConceptosBasicos> */}
         </div>

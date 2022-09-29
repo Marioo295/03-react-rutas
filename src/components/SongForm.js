@@ -1,39 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const initialForm = {
     artist: "",
     song: "",
 };
 
-const SongForm = ({handleSearch}) => {
+const SongForm = ({ handleSearch, handleSaveSong }) => {
     const [form, setForm] = useState(initialForm);
+    const [isDisabled, setIsDisabled] = useState(true);
 
     const handleChange = (e) => {
         setForm({
-            ...form,
-            [e.target.name]: e.target.value,
+        ...form,
+        [e.target.name]: e.target.value,
         });
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+
         if (!form.artist || !form.song) {
-            alert("Datos incompletos");
+            alert("Datos Incompletos");
+            setIsDisabled(true);
             return;
-        } 
+        }
+
         handleSearch(form);
         setForm(initialForm);
+        setIsDisabled(false);
     };
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="artist" placeholder="Nombre del intérprete" onChange={handleChange} value={form.artist}></input>
-                <input type="text" name="song" placeholder="Nombre de la canción" onChange={handleChange} value={form.song}></input>
+                <input type="text" name="artist" placeholder="Nombre del Intérprete" onChange={handleChange} value={form.artist}></input>
+                <input type="text" name="song" placeholder="Nombre de la Canción" onChange={handleChange} value={form.song}></input>
                 <input type="submit" value="Enviar"></input>
+                <input type="button" onClick={handleSaveSong} value="Agregar Canción" disabled={isDisabled && "disabled"}></input>
             </form>
         </div>
     );
 };
 
-export default SongForm
+export default SongForm;

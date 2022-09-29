@@ -1,12 +1,10 @@
-import React from 'react'
-
-const SongLyric = ({tittle, lyrics}) => {
+const SongLyric = ({ title, lyrics }) => {
     return (
         <section>
-            <h3>{tittle}</h3>
-            <blockquote style={{whiteSpace:"pre-wrap"}}>{lyrics}</blockquote>
+            <h3>{title}</h3>
+            <blockquote style={{ whiteSpace: "pre-wrap" }}>{lyrics}</blockquote>
         </section>
     );
 };
-
-export default SongLyric
+  
+export default SongLyric;
