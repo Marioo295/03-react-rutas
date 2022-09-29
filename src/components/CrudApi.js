@@ -91,20 +91,34 @@ const CrudApi = () => {
                     <h2>CRUD API con rutas</h2>
                     <nav>
                         <NavLink to="/" activeClassName="active">Nombres</NavLink>
-                        <NavLink to="/agregar" activeClassName="active">Nombres</NavLink>
+                        <NavLink to="/agregar" activeClassName="active">Agregar</NavLink>
                     </nav>
                 </header>
                 <Switch>
-                    <Route exact path="/"><h2>Home de nombres</h2></Route>
-                    <Route exact path="/agregar"><h2>Agregar nombres</h2></Route>
-                    <Route exact path="/editar/:id"><h2>Editar nombres</h2></Route>
-                    <Route exact path="*" children={<Error404></Error404>}><h2>Error 404</h2></Route>
+                    <Route exact path="/">
+                        <h2>
+                            {loading && <Loader></Loader>}
+                            {error && <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545"></Message>}
+                            {db && <CrudTable data={db} setDataToEdit={setDataToEdit} deleteData={deleteData}></CrudTable>}
+                        </h2>
+                    </Route>
+                    <Route exact path="/agregar">
+                        <h2>
+                            <CrudForm createData={createData} updateData={updateData} dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}></CrudForm>
+                        </h2>
+                    </Route>
+                    <Route exact path="/editar/:id">
+                        <h2>
+                            <CrudForm createData={createData} updateData={updateData} dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}></CrudForm>
+                        </h2>
+                    </Route>
+                    <Route exact path="*" children={<Error404></Error404>}>
+                        <h2>
+                            Error 404
+                        </h2>
+                    </Route>
                 </Switch>
             </HashRouter>
-            <CrudForm createData={createData} updateData={updateData} dataToEdit={dataToEdit} setDataToEdit={setDataToEdit}></CrudForm>
-            {loading && <Loader></Loader>}
-            {error && <Message msg={`Error ${error.status}: ${error.statusText}`} bgColor="#dc3545"></Message>}
-            {db && <CrudTable data={db} setDataToEdit={setDataToEdit} deleteData={deleteData}></CrudTable>}
         </div>
     );
 };
