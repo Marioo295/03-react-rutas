@@ -1,6 +1,6 @@
 import './App.css';
-/* import ConceptosBasicos from './components/ConceptosBasicos'; */
-/* import CrudApi from './components/CrudApi'; */
+import ConceptosBasicos from './components/ConceptosBasicos';
+import CrudApi from './components/CrudApi';
 import SongSearch from './components/SongSearch';
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
         <hr></hr>
         <SongSearch></SongSearch>
         <hr></hr>
-        {/* <CrudApi></CrudApi> */}
+        <CrudApi></CrudApi>
         <hr></hr>
-        {/* <ConceptosBasicos></ConceptosBasicos> */}
+        <ConceptosBasicos></ConceptosBasicos>
         </div>
     );
 }
